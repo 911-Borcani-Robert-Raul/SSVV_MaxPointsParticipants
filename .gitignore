@@ -1,0 +1,22 @@
+# Maven target directories
+target/
+*/target/
+**/target/
+
+# Maven build files
+pom.xml.*
+*.jar
+*.war
+*.ear
+*.class
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse files
+.settings/
+.classpath
+.project
