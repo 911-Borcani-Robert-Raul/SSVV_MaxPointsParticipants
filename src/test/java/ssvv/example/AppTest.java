@@ -332,4 +332,42 @@ public class AppTest
 
         Assert.assertEquals(1, result);
     }
+
+    @Test
+    public void testTemaIdEmpty() {
+        Validator<Student> studentValidator = new StudentValidator();
+        Validator<Tema> temaValidator = new TemaValidator();
+        Validator<Nota> notaValidator = new NotaValidator();
+
+        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
+        for(Student s : fileRepository1.findAll()){
+            fileRepository1.delete(s.getID());
+        }
+        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
+        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+
+        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+        int result = service.saveTema("", "descriere", 3, 2);
+
+        Assert.assertEquals(1, result);
+    }
+
+    @Test
+    public void testTemaOk() {
+        Validator<Student> studentValidator = new StudentValidator();
+        Validator<Tema> temaValidator = new TemaValidator();
+        Validator<Nota> notaValidator = new NotaValidator();
+
+        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
+        for(Student s : fileRepository1.findAll()){
+            fileRepository1.delete(s.getID());
+        }
+        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
+        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+
+        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+        int result = service.saveTema("tema1", "descriere", 3, 2);
+
+        Assert.assertEquals(0, result);
+    }
 }
