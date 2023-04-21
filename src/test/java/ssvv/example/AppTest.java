@@ -335,7 +335,7 @@ public class AppTest
 
 
     @Test
-    public void testTemaIdEmpty() {
+    public void testTemaIdNotInteger() {
         Validator<Student> studentValidator = new StudentValidator();
         Validator<Tema> temaValidator = new TemaValidator();
         Validator<Nota> notaValidator = new NotaValidator();
@@ -348,7 +348,7 @@ public class AppTest
         NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
 
         Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
-        int result = service.saveTema("", "descriere", 3, 2);
+        int result = service.saveTema("tema1", "descriere", 3, 2);
 
         Assert.assertEquals(1, result);
     }
@@ -367,7 +367,7 @@ public class AppTest
         NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
 
         Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
-        int result = service.saveTema("tema1", "descriere", 3, 2);
+        int result = service.saveTema("1", "descriere", 3, 2);
 
         Assert.assertEquals(0, result);
     }
