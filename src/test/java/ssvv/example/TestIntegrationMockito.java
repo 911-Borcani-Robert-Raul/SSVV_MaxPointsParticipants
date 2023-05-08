@@ -72,7 +72,6 @@ public class TestIntegrationMockito {
         Assert.assertEquals(0, result);
     }
 
-
     @Test
     public void testAssignment() {
         Tema tema = new Tema("399", "o tema", 2, 1);
